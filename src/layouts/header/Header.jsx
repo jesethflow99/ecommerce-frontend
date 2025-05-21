@@ -3,7 +3,7 @@ import "./header.css";
 import logo from "../../assets/images/logo.png";
 import Navmobile from "../../components/buttons/Navmobile";
 import { motion } from "framer-motion";
-import Nav_items from "../../components/buttons/Nav_items";
+import Nav_items from "../../components/buttons/Nav_items/Nav_items";
 
 const Header = ({ list = ["Inicio", "Portafolio", "Productos", "Perfil"] }) => {
   const logotipo = logo;
