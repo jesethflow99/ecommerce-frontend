@@ -8,7 +8,7 @@ const footer = () => {
         <h3>CUVE</h3>
         <hr />
         <div className="content">
-          Transformamos ideas en diseños impactantes. Servicios de diseño gráfico profesionales para tu marca.
+          Transformamos ideas en diseños impactantes. Servicios de impresion 3d y corte laser profesionales.
         </div>
         <div className="social">
           <a href="#"><i class="ri-facebook-line"></i></a>
@@ -31,9 +31,9 @@ const footer = () => {
           <h3>Contacto</h3>
           <hr />
           <ul>
-            <li> <i class="ri-map-pin-line"></i> Allende y 4ta Zona centro</li>
-            <li><i class="ri-phone-line"></i> 625-110-0498</li>
-            <li><i class="ri-mail-line"></i> Cuve@gmail.com</li>
+            <li> <i class="ri-map-pin-line"></i> Hidalgo y 9a Zona centro</li>
+            <li><i class="ri-phone-line"></i> 635-120-1576</li>
+            <li><i class="ri-mail-line"></i> marck3design@gmail.com</li>
           </ul>
         </div>
     </div>

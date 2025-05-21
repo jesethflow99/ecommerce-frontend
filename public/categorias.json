@@ -1,96 +1,22 @@
 [
   {
-    "id": 1,
-    "nombre": "Sublimación",
-    "descripcion": "Impresión de alta calidad en diversos materiales.",
-    "servicios": [
-      {
-        "title": "Diseño de Logotipos",
-        "description": "Creamos logotipos únicos y profesionales para representar tu marca de manera impactante.",
-        "image": "https://limagemarketing.es/wp-content/uploads/tipos-de-logotipos.jpg"
-      },
-      {
-        "id": 2,
-        "nombre": "Camisetas Personalizadas",
-        "descripcion": "Impresión de camisetas con diseños personalizados.",
-        "imagen": "https://example.com/camisetas.jpg"
-      }
-    ]
+    "id":1,
+    "nombre":"Grabado laser"
   },
   {
-    "id": 2,
-    "nombre": "Serigrafía",
-    "descripcion": "Técnica de impresión para textiles y otros materiales.",
-    "servicios": [
-      {
-        "id": 3,
-        "nombre": "Bolsas de Tela",
-        "descripcion": "Impresión de bolsas de tela con diseños personalizados.",
-        "imagen": "https://example.com/bolsas_tela.jpg"
-      },
-      {
-        "id": 4,
-        "nombre": "Camisetas Serigrafiadas",
-        "descripcion": "Impresión de camisetas mediante serigrafía.",
-        "imagen": "https://example.com/camisetas_serigrafiadas.jpg"
-      }
-    ]
+    "id":2,
+    "nombre":"Corte laser"
   },
   {
-    "id": 3,
-    "nombre": "Vinilos",
-    "descripcion": "Impresión y corte de vinilos adhesivos.",
-    "servicios": [
-      {
-        "id": 5,
-        "nombre": "Vinilos Decorativos",
-        "descripcion": "Creación de vinilos decorativos para interiores.",
-        "imagen": "https://example.com/vinilos_decorativos.jpg"
-      },
-      {
-        "id": 6,
-        "nombre": "Vinilos para Vehículos",
-        "descripcion": "Impresión de vinilos para rotulación de vehículos.",
-        "imagen": "https://example.com/vinilos_vehiculos.jpg"
-      }
-    ]
+    "id":3,
+    "nombre":"impresion 3d PLA"
   },
   {
-    "id": 4,
-    "nombre": "Rótulos",
-    "descripcion": "Creación de rótulos luminosos y no luminosos.",
-    "servicios": [
-      {
-        "id": 7,
-        "nombre": "Rótulos Luminosos",
-        "descripcion": "Diseño y fabricación de rótulos luminosos.",
-        "imagen": "https://example.com/rotulos_luminosos.jpg"
-      },
-      {
-        "id": 8,
-        "nombre": "Rótulos No Luminosos",
-        "descripcion": "Diseño y fabricación de rótulos no luminosos.",
-        "imagen": "https://example.com/rotulos_no_luminosos.jpg"
-      }
-    ]
+    "id":4,
+    "nombre":"impresion 3d RESINA"
   },
   {
-    "id": 5,
-    "nombre": "Bolsas Personalizadas",
-    "descripcion": "Diseño y producción de bolsas de papel y plástico.",
-    "servicios": [
-      {
-        "id": 9,
-        "nombre": "Bolsas de Papel",
-        "descripcion": "Producción de bolsas de papel personalizadas.",
-        "imagen": "https://example.com/bolsas_papel.jpg"
-      },
-      {
-        "id": 10,
-        "nombre": "Bolsas de Plástico",
-        "descripcion": "Producción de bolsas de plástico personalizadas.",
-        "imagen": "https://example.com/bolsas_plastico.jpg"
-      }
-    ]
+    "id":5,
+    "nombre":"Conjunto"
   }
 ]

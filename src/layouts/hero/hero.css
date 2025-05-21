@@ -6,10 +6,11 @@
     align-items: center;
     padding: 1rem;
     flex-wrap: wrap;
-    background: url("../../assets/images/fondo.png") no-repeat center center;
+    background: url("https://s1.bwallpapers.com/wallpapers/2014/01/22/black-desktop-wallpaper_044727273.jpg") no-repeat center center;
     background-size: cover;
     background-position: 50% 50%;
-    height: 70vh;
+    gap: 20px;
+    min-height: 70vh;
 
     .hero__content{
     display: flex;
@@ -19,6 +20,7 @@
     text-align: center;
     gap: 1rem;
     color: var(--color-text-dark);
+    max-width: 600px;
 }
 
 .hero__content h1{
@@ -27,7 +29,7 @@
 }
 .hero__content p{
     font-size: 1rem;
-
+    max-width: 50%;
 }
 .hero__image{
     width: 100%;
