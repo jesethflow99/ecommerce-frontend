@@ -1,0 +1,14 @@
+.testimonios {
+    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+  gap: 1rem;
+
+  .testimonios_cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+}

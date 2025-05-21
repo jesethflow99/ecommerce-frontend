@@ -1,0 +1,14 @@
+.aside{
+    grid-area: aside;
+    background-color: var(--color-bg-dark);
+    border-radius: 20px;
+    padding: 10px;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .aside{
+        display: none;
+    }
+    
+}

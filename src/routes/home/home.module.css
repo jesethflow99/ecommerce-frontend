@@ -1,0 +1,34 @@
+.home {
+  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 100vw;
+  display: grid;
+  gap: 1rem;
+  grid-template:
+    "header header header" 100px
+    "hero hero hero" auto
+    "aside content content" auto
+    "footer footer footer" auto
+    / 1fr 3fr 1fr;
+
+  .hero {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  .aside {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  .content {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  .footer {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  @media screen and (max-width: 768px) {
+    grid-template:
+      "header  " 100px
+      "hero    " auto
+      "content  " auto
+      "footer  " auto;
+  }
+}

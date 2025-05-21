@@ -1,0 +1,55 @@
+.footer{
+    grid-area: footer;
+    background-color: var(--color-bg-dark);
+    border-radius: 20px;
+    color: var(--color-text-dark);
+    display: flex;
+    height: max-content;
+    justify-content: space-between;
+    padding: 20px;
+    text-align: start;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    h3{
+        font-size: 1.5rem;
+        margin: auto;
+    }
+
+    .cuve{
+        max-width: 500px;
+        text-align: center;
+        gap: 2rem;
+
+    }
+    .enlaces_rapidos ul{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: auto;
+        
+    }
+    a:hover{
+        color: var(--color-primary);
+    }
+    .contacto ul{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: auto;
+    }
+    i{
+        color: var(--color-primary);
+        font-size: 1.5rem;
+    }
+    .social{
+        display: flex;
+        gap: 1rem;
+        margin: auto;
+        justify-content: center;
+    }
+    .social i:hover{
+        color: var(--color-secondary);
+        transition: all 0.3s ease-in-out;
+    }
+}

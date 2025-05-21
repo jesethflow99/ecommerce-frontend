@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "title": "Diego García",
+    "description": "Muy buen servicio, gran calidad y buen tiempo de entrega.",
+    "stars": 5
+  },
+  {
+    "id": "2",
+    "title": "Mariana López",
+    "description": "Los diseños personalizados quedaron increíbles, justo como los imaginaba.",
+    "stars": 5
+  },
+  {
+    "id": "3",
+    "title": "Carlos Ramírez",
+    "description": "Buena atención y excelente calidad en las tazas. Volveré a pedir pronto.",
+    "stars": 4
+  },
+  {
+    "id": "4",
+    "title": "Laura Méndez",
+    "description": "La entrega fue muy rápida y el estampado se ve profesional.",
+    "stars": 5
+  },
+  {
+    "id": "5",
+    "title": "Andrés Torres",
+    "description": "Buen trabajo, aunque el diseño venía un poco descentrado. Aún así, lo recomiendo.",
+    "stars": 3
+  }
+]
