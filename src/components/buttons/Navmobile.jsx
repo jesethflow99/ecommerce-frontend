@@ -11,6 +11,7 @@ import Nav_items from "./Nav_items/Nav_items";
 import { useNavigate } from "react-router-dom";
 import { time } from "framer-motion";
 import document from "../../assets/documents/SOBRE.pdf";
+import DashboardMenu from "../BasicMenu";
 
 export default function Navmobile({ list }) {
   const [open, setOpen] = React.useState(false);
@@ -71,6 +72,9 @@ export default function Navmobile({ list }) {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem>
+          <DashboardMenu/>
+        </ListItem>
       </List>
       <Divider />
       <div
@@ -84,7 +88,9 @@ export default function Navmobile({ list }) {
           width: "100%",
         }}
       >
+         <br />
         <Nav_items />
+        
       </div>
     </Box>
   );

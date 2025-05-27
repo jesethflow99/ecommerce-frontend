@@ -23,10 +23,35 @@ export const getUser = async () => {
     const res = await api.get('/auth/me');
     return res.data;
   } catch (err) {
-    console.error('Error al obtener el usuario:', err);
+    const errorMessage = err.response?.data?.msg || err.message || 'Error desconocido';
+    console.error('Error al obtener el usuario:', errorMessage);
+    throw new Error(errorMessage); // lanzamos un error más legible
+  }
+};
+
+
+// src/services/api.js
+
+export const loginUser = async ({ email, password }) => {
+  try {
+    const res = await api.post('/auth/login', { email, password });
+    return res.data; // contiene el token y lo que devuelva tu backend
+  } catch (err) {
+    console.error('Error al iniciar sesión:', err);
     throw err;
   }
 };
+
+export const signupUser = async ({username,email,password,phone,address}) => {
+  try {
+    const res = await api.post("/auth/register",{username,email,password,phone,address})
+    return res.data
+  }catch (err){
+    console.error("Error al registrar: ")
+    throw err;
+  }
+}
+
 
 export const fetchServices = async (category) => {
   try {
@@ -70,7 +95,7 @@ export const fetchProductById = async (id) => {
 
 export const fetchorderbyUser = async (userId) => {
   try {
-    const res = await api.get(`/orders/user/${userId}`);
+    const res = await api.get(`/products/orders/${userId}`);
     return res.data;
   } catch (err) {
     console.error(`Error al obtener pedidos del usuario con ID ${userId}:`, err);

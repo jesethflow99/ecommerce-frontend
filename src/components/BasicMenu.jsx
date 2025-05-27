@@ -2,12 +2,30 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { getUser } from '../utils';
 
 export default function DashboardMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const [userRole, setUserRole] = React.useState(null); // Estado para el rol
   const open = Boolean(anchorEl);
+
+  // Validación segura del localStorage
+  let userData = null;
+  let userRole = null;
+
+  try {
+    const me = localStorage.getItem('me');
+    if (me) {
+      userData = JSON.parse(me);
+      userRole = userData.role;
+    }
+  } catch (error) {
+    console.error('Error al leer datos del usuario:', error);
+    return null;
+  }
+
+  if (!userRole || !['admin', 'seller'].includes(userRole)) {
+    console.log('Usuario sin permisos para ver el menú de Dashboard');
+    return null;
+  }
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -16,28 +34,6 @@ export default function DashboardMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  // Obtener el rol del usuario desde el backend
-  React.useEffect(() => {
-    const fetchUserRole = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const res = await getUser();
-        setUserRole(res.data.role); // Asume que tu backend retorna un campo `role`
-      } catch (err) {
-        console.error('Error al obtener datos del usuario:', err);
-      }
-    };
-
-    fetchUserRole();
-  }, []);
-
-  // Si el usuario no tiene permisos, no mostramos nada
-  if (!['admin', 'seller'].includes(userRole)) {
-    console.log('Usuario sin permisos para ver el menú de Dashboard');
-    console.log('Rol del usuario:', userRole);
-    return null;
-  }
 
   return (
     <div>

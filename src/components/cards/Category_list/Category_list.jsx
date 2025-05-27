@@ -3,6 +3,16 @@ import "./Category_list.css";
 
 
 const Category_list = () => {
+  useEffect(()=>{
+    
+  })
+
+
+
+
+
+
+
    const [categories, setCategories] = useState([]);
        useEffect(() => {
            fetch("/categorias.json")
@@ -18,16 +28,13 @@ const Category_list = () => {
          <ul className="category_list">
           <div className="search_bar">
           <input type="text" placeholder="Buscar..." />
-          <button className="search_button"> <i class="ri-search-line"></i> </button>
+          <button className="search_button"> <i className="ri-search-line"></i> </button>
         </div>
            {categories.map((category, index) => (
              <li key={index} className="category_list_item">
                <button href="#">{category.nombre}</button>
              </li>
            ))}
-          <button onClick={()=>{
-
-          }}>Agregar categoria</button>
          </ul>
    
        </div>

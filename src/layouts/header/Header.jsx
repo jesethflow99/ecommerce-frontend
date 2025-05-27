@@ -13,6 +13,7 @@ const Header = ({ list = ["Inicio", "Sobre", "Servicios", "Contacto","Salir"] })
   const navigate = useNavigate()
   const handleLogout = () => {
     localStorage.removeItem('token') // Elimina el token del almacenamiento local
+    localStorage.removeItem('me')
     navigate('/login') // Redirige a la página de inicio de sesión
     alert('Has cerrado sesión correctamente.'); // Muestra un mensaje de confirmación
   };
@@ -55,7 +56,7 @@ const Header = ({ list = ["Inicio", "Sobre", "Servicios", "Contacto","Salir"] })
           <li><a href="./#Contacto">Contacto</a></li>
           
           <Nav_items/>
-          <li className="logout"><a onClick={handleLogout} ><i class="ri-logout-box-r-line"></i></a></li>
+          <li className="logout"><a onClick={handleLogout} ><i className="ri-logout-box-r-line"></i></a></li>
         </ul>
       </div>
 

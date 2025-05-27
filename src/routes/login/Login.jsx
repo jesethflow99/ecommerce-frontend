@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Alert, Snackbar } from "@mui/material";
+import { loginUser,signupUser } from "../../utils";
+
+
+
 
 const AuthForm = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -14,89 +18,51 @@ const AuthForm = () => {
   const [neighborhood, setNeighborhood] = useState("");
   const [number, setNumber] = useState("");
   const navigate = useNavigate();
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertSeverity, setAlertSeverity] = useState("error");
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  
+
+  const handleLogin = async (e) =>{
+    e.preventDefault()
     try {
-      const res = await fetch("http://192.168.0.10:5000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const data = await loginUser({email,password})
+      localStorage.setItem('token',data.access_token);
+      
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        // Maneja el error según el formato del backend
-        const errorMessage = data.msg || "Error desconocido al iniciar sesión";
-        throw new Error(errorMessage);
-      }
-
-      localStorage.setItem("token", data.access_token);
-      navigate("/");
-    } catch (error) {
-      console.error("Login failed:", error);
-      setAlertMessage("Error al iniciar sesión: " + error.message);
-      setAlertSeverity("error");
-      setAlertOpen(true);
+      navigate('/');
+    }catch (error){
+      const errorMessage = error.response?.data?.msg || error.message || "Error desconocido";
+      setAlertMessage('Error al iniciar sesion: '+ errorMessage);
+      setAlertSeverity('error');
+      setAlertOpen(true)
     }
-  };
+  }
 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
+  
 
+  const handleSignUp = async (e) =>{
+    e.preventDefault()
     const address = `${street} ${number}, ${neighborhood}, C.P. ${postalCode}`;
 
-    try {
-      const res = await fetch("http://192.168.0.10:5000/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          email,
-          password,
-          phone,
-          address,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        let errorMessage = "";
-
-        // Manejo de errores tipo objeto (como los de Marshmallow)
-        if (typeof data === "object" && data !== null) {
-          errorMessage = Object.entries(data)
-            .map(([field, messages]) => `${field}: ${messages.join(", ")}`)
-            .join("\n");
-        } else {
-          errorMessage = data.message || "Error en el registro";
-        }
-
-        throw new Error(errorMessage);
-      }
-
-      localStorage.setItem("token", data.token);
-      navigate("/");
-    } catch (error) {
-      console.error("Signup failed:", error);
-      setAlertMessage("Error al iniciar sesión: " + error.message);
-      setAlertSeverity("error");
-      setAlertOpen(true);
+    try{
+      const data = await signupUser({username,email,password,phone,address})
+      localStorage.setItem('token',data.token)
+      
+      navigate('/')
+    }catch(error){
+      setAlertMessage('Error en el regstro: ' +error)
+      setAlertSeverity("error")
+      setAlertOpen(true)
     }
-  };
+    
+  }
 
   const toggleForm = () => {
     setIsFlipped(!isFlipped);
   };
-  const [alertOpen, setAlertOpen] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
-  const [alertSeverity, setAlertSeverity] = useState("error"); // 'error', 'success', 'warning', 'info'
+  
 
   return (
     <StyledWrapper>

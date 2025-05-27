@@ -11,10 +11,10 @@ const footer = () => {
           Transformamos ideas en diseños impactantes. Servicios de impresion 3d y corte laser profesionales.
         </div>
         <div className="social">
-          <a href="#"><i class="ri-facebook-line"></i></a>
-          <a href="#"><i class="ri-instagram-line"></i></a>
-          <a href="#"><i class="ri-whatsapp-line"></i></a>
-          <a href="#"><i class="ri-twitter-line"></i></a>
+          <a href="#"><i className="ri-facebook-line"></i></a>
+          <a href="#"><i className="ri-instagram-line"></i></a>
+          <a href="#"><i className="ri-whatsapp-line"></i></a>
+          <a href="#"><i className="ri-twitter-line"></i></a>
         </div>
       </div>
       <div className="enlaces_rapidos">
@@ -31,9 +31,9 @@ const footer = () => {
           <h3>Contacto</h3>
           <hr />
           <ul>
-            <li> <i class="ri-map-pin-line"></i> Hidalgo y 9a Zona centro</li>
-            <li><i class="ri-phone-line"></i> 635-120-1576</li>
-            <li><i class="ri-mail-line"></i> marck3design@gmail.com</li>
+            <li> <i className="ri-map-pin-line"></i> Hidalgo y 9a Zona centro</li>
+            <li><i className="ri-phone-line"></i> 635-120-1576</li>
+            <li><i className="ri-mail-line"></i> marck3design@gmail.com</li>
           </ul>
         </div>
     </div>

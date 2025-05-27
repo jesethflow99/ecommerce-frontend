@@ -5,8 +5,11 @@ import Portfolio from './routes/portfolio/Portfolio'
 import Product from './routes/product/Product'
 import AuthForm from './routes/login/Login'
 import PrivateRoute from './components/Private_route'
+import { useEffect } from 'react'
+
 
 const App = () => {
+  
   return (
     <div className='app'>
       <Router>
