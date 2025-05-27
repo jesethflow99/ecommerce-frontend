@@ -15,7 +15,7 @@ const Content = () => {
   }, []);
 
   return (
-    <div className="content">
+    <div className="content" id="content">
       <h1>Sublimacion</h1>
       <div className="Service_cards">
         {services.map((service,index) => (

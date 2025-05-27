@@ -1,48 +1,105 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import Nav_items from './Nav_items/Nav_items';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import Nav_items from "./Nav_items/Nav_items";
+import { useNavigate } from "react-router-dom";
+import { time } from "framer-motion";
+import document from "../../assets/documents/SOBRE.pdf";
 
-
-export default function Navmobile({list}) {
+export default function Navmobile({ list }) {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Limpia el token
+    setOpen(false); // Cierra el drawer
+    setTimeout(() => {
+      navigate("/login"); // Redirige
+      alert("Has cerrado sesión correctamente."); // Después muestra el mensaje
+    }, 100); // Le das un pequeño delay para que React procese
+  };
+
+  const handleNavigation = (text) => {
+    switch (text) {
+      case "Inicio":
+        navigate("/");
+        break;
+      case "Sobre":
+        navigate(document);
+        break;
+      case "Servicios":
+        window.location.href = "/#content";
+        break;
+      case "Contacto":
+        window.location.href = "/#Contacto";
+        break;
+      case "Salir":
+        handleLogout();
+        window.location.href = "/login";
+        return;
+      default:
+        break;
+    }
+
+    // Ahora sí, cerramos el drawer después de manejar la navegación
+    setOpen(false);
+  };
 
   const DrawerList = (
-    <Box sx={{ width: 250, background:"var(--color-bg)" }} role="presentation" onClick={toggleDrawer(false)}>
-      
+    <Box
+      sx={{ width: 250, background: "var(--color-bg)", height: "100%" }}
+      role="presentation"
+    >
       <List>
-        
         {list.map((text) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
+            <ListItemButton onClick={() => {
+              handleNavigation(text)}}>
+              <ListItemText
+                primary={text}
+                sx={{ color: "var(--color-text)" }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
-        <div className="items" style={{position:"absolute", bottom:"0", width:"100%", padding:"10px 20px", display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-          <Nav_items/>
-          <Divider />
-        </div>
+      <div
+        className="items"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "10px",
+          position: "absolute",
+          bottom: "0",
+          width: "100%",
+        }}
+      >
+        <Nav_items />
+      </div>
     </Box>
   );
 
   return (
-    <div className='navmobile'>
-      
-      <Button variant="outlined" sx={{color:"var(--color-text-dark)", outline:"1px solid var(--color-text-dark)"}} onClick={toggleDrawer(true)}>
-        <i class="ri-menu-line"></i>
+    <div className="navmobile">
+      <Button
+        variant="outlined"
+        sx={{
+          color: "var(--color-text-dark)",
+          borderColor: "var(--color-text-dark)",
+        }}
+        onClick={toggleDrawer(true)}
+      >
+        <i className="ri-menu-line"></i>
       </Button>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
         {DrawerList}

@@ -3,9 +3,9 @@ import './footer.css'
 
 const footer = () => {
   return (
-    <div className="footer">
+    <div className="footer" id='Contacto'>
       <div className="cuve">
-        <h3>CUVE</h3>
+        <h3>Laser and 3d Print</h3>
         <hr />
         <div className="content">
           Transformamos ideas en diseños impactantes. Servicios de impresion 3d y corte laser profesionales.

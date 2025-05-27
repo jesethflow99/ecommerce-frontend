@@ -47,8 +47,10 @@ body {
   color: var(--color-text);
 }
 .app {
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+html {
+  scroll-behavior: smooth;
 }

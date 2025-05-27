@@ -1,6 +1,7 @@
 import React,{ useState,useEffect } from 'react';
 import "./Category_list.css";
 
+
 const Category_list = () => {
    const [categories, setCategories] = useState([]);
        useEffect(() => {
@@ -24,7 +25,9 @@ const Category_list = () => {
                <button href="#">{category.nombre}</button>
              </li>
            ))}
-   
+          <button onClick={()=>{
+
+          }}>Agregar categoria</button>
          </ul>
    
        </div>
