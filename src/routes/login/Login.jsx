@@ -48,7 +48,9 @@ const AuthForm = () => {
 
     try{
       const data = await signupUser({username,email,password,phone,address})
-      localStorage.setItem('token',data.token)
+      const loginData = await loginUser({ email, password });
+      localStorage.setItem('token', loginData.access_token); // Guarda el token en localStorage
+  
       
       navigate('/')
     }catch(error){

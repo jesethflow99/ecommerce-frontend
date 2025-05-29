@@ -18,9 +18,45 @@ api.interceptors.request.use((config) => {
 // Funciones API
 // ==========================
 
+export const getAllUsers = async () => {
+  try{
+    const res = await api.get("admin/get_all_users")
+    return res.data;
+  }catch (err){
+    const errorMessage = err.response?.data?.msg || err.message || 'Error desconocido';
+    console.error("Error al obtener la lista de usuarios: ",errorMessage)
+    throw new Error(errorMessage);
+  }
+}
+
+
+
+
 export const getUser = async () => {
   try {
     const res = await api.get('/auth/me');
+    return res.data;
+  } catch (err) {
+    const errorMessage = err.response?.data?.msg || err.message || 'Error desconocido';
+    console.error('Error al obtener el usuario:', errorMessage);
+    throw new Error(errorMessage); // lanzamos un error más legible
+  }
+};
+
+export const deleteUser = async (id) => {
+  try {
+    const res = await api.delete('/admin/delete/'+id);
+    return res.data;
+  } catch (err) {
+    const errorMessage = err.response?.data?.msg || err.message || 'Error desconocido';
+    console.error('Error al obtener el usuario:', errorMessage);
+    throw new Error(errorMessage); // lanzamos un error más legible
+  }
+};
+
+export const changeRole = async (id,role) => {
+  try {
+    const res = await api.patch(`/admin/change_role/${id}`,{role});
     return res.data;
   } catch (err) {
     const errorMessage = err.response?.data?.msg || err.message || 'Error desconocido';
@@ -88,7 +124,7 @@ export const fetchProductById = async (id) => {
     const res = await api.get(`/products/product/${id}`);
     return res.data;
   } catch (err) {
-    console.error(`Error al obtener producto con ID ${id}:`, err);
+    
     throw err;
   }
 };
@@ -98,7 +134,7 @@ export const fetchorderbyUser = async (userId) => {
     const res = await api.get(`/products/orders/${userId}`);
     return res.data;
   } catch (err) {
-    console.error(`Error al obtener pedidos del usuario con ID ${userId}:`, err);
+    
     throw err;
   }
 }

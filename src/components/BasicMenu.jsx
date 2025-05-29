@@ -1,29 +1,30 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 export default function DashboardMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
 
-  // Validación segura del localStorage
   let userData = null;
   let userRole = null;
 
   try {
-    const me = localStorage.getItem('me');
+    const me = localStorage.getItem("me");
     if (me) {
       userData = JSON.parse(me);
       userRole = userData.role;
     }
   } catch (error) {
-    console.error('Error al leer datos del usuario:', error);
+    console.error("Error al leer datos del usuario:", error);
     return null;
   }
 
-  if (!userRole || !['admin', 'seller'].includes(userRole)) {
-    console.log('Usuario sin permisos para ver el menú de Dashboard');
+  if (!userRole || !["admin", "seller"].includes(userRole)) {
+    console.log("Usuario sin permisos para ver el menú de Dashboard");
     return null;
   }
 
@@ -39,9 +40,9 @@ export default function DashboardMenu() {
     <div>
       <Button
         id="dashboard-button"
-        aria-controls={open ? 'dashboard-menu' : undefined}
+        aria-controls={open ? "dashboard-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
         Dashboard
@@ -51,19 +52,21 @@ export default function DashboardMenu() {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        slotProps={{
-          listbox: {
-            'aria-labelledby': 'dashboard-button',
-          },
-        }}
       >
         <MenuItem onClick={handleClose}>Agregar categoría</MenuItem>
         <MenuItem onClick={handleClose}>Agregar producto</MenuItem>
-        {userRole === 'admin' && (
-          <>
-            <MenuItem onClick={handleClose}>Gestionar usuarios</MenuItem>
+        {userRole === "admin" && (
+          <div>
+            <MenuItem
+              onClick={() => {
+                handleClose();
+                navigate("/admin/users");
+              }}
+            >
+              Gestionar Usuarios
+            </MenuItem>
             <MenuItem onClick={handleClose}>Ver reportes</MenuItem>
-          </>
+            </div>
         )}
       </Menu>
     </div>

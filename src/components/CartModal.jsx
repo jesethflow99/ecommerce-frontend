@@ -26,6 +26,7 @@ const CartModal = () => {
   const user = JSON.parse(localStorage.getItem('me'));
   const userId = user?.id;
 
+
   useEffect(() => {
     const fetchOrders = async () => {
       if (!userId) return;
@@ -33,7 +34,6 @@ const CartModal = () => {
         const data = await fetchorderbyUser(userId);
         setOrderItems(data); // Asume que data es un array de productos o items
       } catch (error) {
-        console.error('Error al cargar el carrito:', error);
         setOrderItems([]);
       } finally {
         setLoading(false);

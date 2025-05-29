@@ -49,11 +49,11 @@ const Header = ({ list = ["Inicio", "Sobre", "Servicios", "Contacto","Salir"] })
       <div className="nav" id="#inicio">
         <ul>
           <BasicMenu></BasicMenu>
-          <li><a href="./">Inicio</a></li>
+          <li><a href="/">Inicio</a></li>
           <li><a href={document} target="_blank">Sobre</a></li>
-          <li><a href="./#content">Servicios</a></li>
+          <li><a href="/#content">Servicios</a></li>
           <li>Portafolio</li>
-          <li><a href="./#Contacto">Contacto</a></li>
+          <li><a href="/#Contacto">Contacto</a></li>
           
           <Nav_items/>
           <li className="logout"><a onClick={handleLogout} ><i className="ri-logout-box-r-line"></i></a></li>

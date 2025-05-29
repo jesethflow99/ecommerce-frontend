@@ -33,8 +33,8 @@ export default function Service_card({ title, description, image }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" sx={{ color: "var(--color-text)" }}>Cotizar</Button>
-          <Button size="small" sx={{ color: "var(--color-text)" }}>Ver Más</Button>
+          <Button size="small" sx={{ color: "var(--color-text)" }}>Agregar al carrito</Button>
+          <Button size="small" sx={{ color: "var(--color-text)" }}>Vista previa</Button>
         </CardActions>
       </Card>
 

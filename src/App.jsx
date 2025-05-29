@@ -4,8 +4,9 @@ import Home from './routes/home/home'
 import Portfolio from './routes/portfolio/Portfolio'
 import Product from './routes/product/Product'
 import AuthForm from './routes/login/Login'
-import PrivateRoute from './components/Private_route'
+import {PrivateRoute, RoleBasedRoute} from './components/Private_route'
 import { useEffect } from 'react'
+import Gestor_usuarios from './routes/Gestor_usuarios/Gestor_usuarios'
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/portfolio" element={<PrivateRoute><Portfolio /></PrivateRoute>} />
           <Route path="/product" element={<PrivateRoute><Product /></PrivateRoute>} />
           <Route path="/login" element={<AuthForm />} />
+          <Route path="/admin/users" element={<RoleBasedRoute allowedRoles={['admin']}><Gestor_usuarios/></RoleBasedRoute>} />
         </Routes>
       </Router>
     </div>
