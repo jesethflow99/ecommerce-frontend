@@ -139,4 +139,14 @@ export const fetchorderbyUser = async (userId) => {
   }
 }
 
+export const AddItem = async (data) => {
+  try {
+    const res = await api.post(`/products`,data);
+    return res.data;
+  } catch (err) {
+    
+    throw err;
+  }
+}
+
 export default api;

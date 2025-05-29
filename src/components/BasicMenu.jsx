@@ -53,7 +53,13 @@ export default function DashboardMenu() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Agregar categoría</MenuItem>
+        <MenuItem 
+        onClick={() => {
+                handleClose();
+                navigate("/seller/categories");
+              }}>
+                Agregar categoría
+              </MenuItem>
         <MenuItem onClick={handleClose}>Agregar producto</MenuItem>
         {userRole === "admin" && (
           <div>

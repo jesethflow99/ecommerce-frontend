@@ -1,24 +1,26 @@
 import React,{ useState,useEffect } from 'react';
 import "./Category_list.css";
-
+import { fetchCategories } from '../../../utils';
 
 const Category_list = () => {
   useEffect(()=>{
     
   })
-
-
-
-
-
-
-
    const [categories, setCategories] = useState([]);
+   const [name, setName] = useState("");
+   const [description, setDescription] = useState("");
+
        useEffect(() => {
-           fetch("/categorias.json")
-               .then((response) => response.json())
-               .then((data) => setCategories(data))
-               .catch((error) => console.error("Error fetching data: ", error));
+            const fetchCat = async () => {
+              try {
+                const data = await fetchCategories();
+                setCategories(data);
+              } catch (err) {
+                console.error("Error al obtener usuarios: ", err.message);
+              }
+            };
+            fetchCat()
+          
        }, []);
      return (
        <div className='category'>
@@ -32,7 +34,7 @@ const Category_list = () => {
         </div>
            {categories.map((category, index) => (
              <li key={index} className="category_list_item">
-               <button href="#">{category.nombre}</button>
+               <button href="#">{category.name}</button>
              </li>
            ))}
          </ul>
