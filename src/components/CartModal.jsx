@@ -31,7 +31,7 @@ const CartModal = () => {
     const fetchOrders = async () => {
       if (!userId) return;
       try {
-        const data = await fetchorderbyUser(userId);
+        const data = await getOrderById(userId);
         setOrderItems(data); // Asume que data es un array de productos o items
       } catch (error) {
         setOrderItems([]);

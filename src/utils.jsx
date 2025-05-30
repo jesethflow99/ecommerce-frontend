@@ -141,7 +141,7 @@ export const fetchorderbyUser = async (userId) => {
 
 export const AddItem = async (data) => {
   try {
-    const res = await api.post(`/products`,data);
+    const res = await api.post(`/products/products`,data);
     return res.data;
   } catch (err) {
     
@@ -158,5 +158,124 @@ export const AddCategory = async (data) => {
     throw err;
   }
 }
+
+export const deleteProduct = async (id) =>{
+  try {
+    const res = await api.delete(`/products/${id}`)
+    return res.data;
+  }catch(err){
+    console.log("no se pudo eliminar el producto: "+err)
+    throw err;
+    
+  }
+}
+
+export const deleteCategory = async (id) => {
+  try {
+    const res = await api.delete(`/products/categories/${id}`);
+    return res.data;
+  } catch (err) {
+    console.error("Error al eliminar la categoría: ", err);
+    throw err;
+  }
+};
+
+export const ProductsByCategory = async (id) => {
+  try {
+    const res = await api.get(`/products/categories/${id}`);
+    return res.data;
+  } catch (err) {
+    console.error("Error al obtener la categoría: ", err);
+    throw err;
+  }
+};
+
+export const updateProductStock = async (productId, stock) => {
+  try {
+    const res = await api.patch(`/products/${productId}`, { stock });
+    return res.data;
+  } catch (err) {
+    console.error('Error al actualizar stock:', err.message);
+    throw err;
+  }
+};
+
+// Crear una nueva orden
+export const createOrder = async (user_id) => {
+  try {
+    const res = await api.post('ventas/orders',user_id);
+    return res.data;
+  } catch (err) {
+    console.error('Error al crear la orden:', err.message);
+    throw err;
+  }
+};
+
+// Obtener todas las órdenes
+export const getOrders = async () => {
+  try {
+    const res = await api.get('/orders');
+    return res.data;
+  } catch (err) {
+    console.error('Error al obtener las órdenes:', err.message);
+    throw err;
+  }
+};
+
+// Obtener una orden específica
+export const getOrderById = async (user_id) => {
+  try {
+    const res = await api.get(`/orders/${user_id}`);
+    return res.data;
+  } catch (err) {
+    console.error('Error al obtener la orden:', err.message);
+    throw err;
+  }
+};
+
+// Actualizar el estado de una orden
+export const updateOrderStatus = async (orderId, status) => {
+  try {
+    const res = await api.patch(`/orders/${orderId}`, { status });
+    return res.data;
+  } catch (err) {
+    console.error('Error al actualizar la orden:', err.message);
+    throw err;
+  }
+};
+
+// Eliminar una orden
+export const deleteOrder = async (orderId) => {
+  try {
+    const res = await api.delete(`/orders/${orderId}`);
+    return res.data;
+  } catch (err) {
+    console.error('Error al eliminar la orden:', err.message);
+    throw err;
+  }
+};
+
+// Agregar un ítem a una orden
+export const addOrderItem = async (data) => {
+  try {
+    console.log(data)
+    const res = await api.post(`/orders/${data.orderId}/items`, data);
+    return res.data;
+  } catch (err) {
+    console.error('Error al agregar un ítem a la orden:', err.message);
+    throw err;
+  }
+};
+
+// Eliminar un ítem de una orden
+export const deleteOrderItem = async (orderId, itemId) => {
+  try {
+    const res = await api.delete(`/orders/${orderId}/items/${itemId}`);
+    return res.data;
+  } catch (err) {
+    console.error('Error al eliminar un ítem de la orden:', err.message);
+    throw err;
+  }
+};
 
 export default api;

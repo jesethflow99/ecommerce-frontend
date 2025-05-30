@@ -6,9 +6,38 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { createOrder,addOrderItem,getOrderById } from '../../utils'; // Importar la función
 
-export default function Service_card({ title, description, image }) {
+export default function Service_card({id,title, description, image }) {
   const [isOpen, setIsOpen] = React.useState(false);
+
+  const handleAddToCart = async () => {
+    try {
+      const userData = JSON.parse(localStorage.getItem('me'));
+      const user_id = userData.id;
+  
+
+        const order = await createOrder(user_id); 
+        const order_E = await getOrderById(order.order.id);
+        const item = await addOrderItem({ orderId: order_E.id, productId: id, quantity: 1 });
+      
+      
+      console.log(order.order.id)
+      
+      // Luego agregas el ítem a esa orden (el backend debería devolver la orden creada o existente)
+      
+      
+      alert('Producto agregado al carrito');
+    } catch (err) {
+      if (err) {
+        alert('Error al agregar al carrito');
+        console.error(err);
+      }
+    }
+  };
+  
+  
+  
 
   return (
     <>
@@ -33,7 +62,13 @@ export default function Service_card({ title, description, image }) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" sx={{ color: "var(--color-text)" }}>Agregar al carrito</Button>
+          <Button
+            size="small"
+            sx={{ color: "var(--color-text)" }}
+            onClick={handleAddToCart} // Llamar a la función al hacer clic
+          >
+            Agregar al carrito
+          </Button>
           <Button size="small" sx={{ color: "var(--color-text)" }}>Vista previa</Button>
         </CardActions>
       </Card>

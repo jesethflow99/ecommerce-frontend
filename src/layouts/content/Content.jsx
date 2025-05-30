@@ -1,34 +1,49 @@
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./content.css";
 import Service_card from "../../components/cards/Service_card";
 import Testimonios from "../../components/cards/testimonios/Testimonios";
+import { ProductsByCategory } from "../../utils";
+import { CategoryContext } from "../../context/CategoryContext";
 
 const Content = () => {
-  const [services, setServices] = useState([]);
+  const { selectedCategory } = useContext(CategoryContext); // 🎯 obtenemos la categoría seleccionada
+  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-    fetch("/Services.json")
-      .then((response) => response.json())
-      .then((data) => setServices(data))
-      .catch((error) => console.error("Error fetching data: ", error));
-  }, []);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      if (!selectedCategory) return;
+      try {
+        const data = await ProductsByCategory(selectedCategory);
+        setProducts(data);
+      } catch (error) {
+        console.error("Error al obtener productos por categoría:", error.message);
+      }
+    };
+
+    fetchProducts();
+  }, [selectedCategory]); // 🧠 reactualiza solo si cambia la categoría
 
   return (
     <div className="content" id="content">
-      <h1>Sublimacion</h1>
+      <h1>Productos</h1>
+
       <div className="Service_cards">
-        {services.map((service,index) => (
-          <Service_card
-            key={index}
-            title={service.title}
-            description={service.description}
-            image={service.image}
-          />
-        ))}
-        
+        {products.length > 0 ? (
+          products.map((product) => (
+            <Service_card
+            key={product.id}
+              id={product.id}
+              title={product.name}
+              description={product.description}
+              image={product.image_url}
+            />
+          ))
+        ) : (
+          <p>No hay productos para esta categoría.</p>
+        )}
       </div>
-        <Testimonios />
+
+      <Testimonios />
     </div>
   );
 };

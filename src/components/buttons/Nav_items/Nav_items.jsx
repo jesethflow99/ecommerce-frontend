@@ -15,7 +15,6 @@ const Nav_items = () => {
       </div>
       <div className="user">
         <Avatar sx={{ backgroundColor: "var(--color-primary)" }}>{name[0]}</Avatar>
-        {console.log(name)}
       </div>
     </div>
   );

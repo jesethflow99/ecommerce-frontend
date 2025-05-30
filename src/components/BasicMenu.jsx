@@ -58,9 +58,8 @@ export default function DashboardMenu() {
                 handleClose();
                 navigate("/seller/categories");
               }}>
-                Agregar categoría
+                Gestionar Productos
               </MenuItem>
-        <MenuItem onClick={handleClose}>Agregar producto</MenuItem>
         {userRole === "admin" && (
           <div>
             <MenuItem

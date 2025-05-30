@@ -5,13 +5,14 @@ import Portfolio from './routes/portfolio/Portfolio'
 import Product from './routes/product/Product'
 import AuthForm from './routes/login/Login'
 import {PrivateRoute, RoleBasedRoute} from './components/Private_route'
-import { useEffect } from 'react'
 import Gestor_usuarios from './routes/Gestor_usuarios/Gestor_usuarios'
 import Categorias from './seller/categorias/Categorias'
+import Productos from './seller/products/Productos'
+import { CategoryProvider } from './context/CategoryContext';
 
 const App = () => {
-  
   return (
+    <CategoryProvider>
     <div className='app'>
       <Router>
         <Routes>
@@ -20,10 +21,13 @@ const App = () => {
           <Route path="/product" element={<PrivateRoute><Product /></PrivateRoute>} />
           <Route path="/login" element={<AuthForm />} />
           <Route path="/admin/users" element={<RoleBasedRoute allowedRoles={['admin']}><Gestor_usuarios/></RoleBasedRoute>} />
-          <Route path="/seller/categories" element={<RoleBasedRoute allowedRoles={['admin',"seller"]}><Categorias/></RoleBasedRoute>} />
+          <Route path="/seller/categories" element={<RoleBasedRoute allowedRoles={['admin','seller']}><Categorias/></RoleBasedRoute>} />
+          {/* Aquí agregas la ruta para productos por categoría */}
+          <Route path="/products/:categoryId" element={<RoleBasedRoute allowedRoles={['admin','seller']}><Productos/></RoleBasedRoute>} />
         </Routes>
       </Router>
     </div>
+    </CategoryProvider>
   )
 }
 
