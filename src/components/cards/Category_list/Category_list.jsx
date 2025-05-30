@@ -7,8 +7,7 @@ const Category_list = () => {
     
   })
    const [categories, setCategories] = useState([]);
-   const [name, setName] = useState("");
-   const [description, setDescription] = useState("");
+
 
        useEffect(() => {
             const fetchCat = async () => {

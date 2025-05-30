@@ -149,4 +149,14 @@ export const AddItem = async (data) => {
   }
 }
 
+export const AddCategory = async (data) => {
+  try {
+    const res = await api.post(`products/categories`,data);
+    return res.data;
+  } catch (err) {
+    
+    throw err;
+  }
+}
+
 export default api;
