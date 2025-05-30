@@ -83,7 +83,8 @@ export const signupUser = async ({username,email,password,phone,address}) => {
     const res = await api.post("/auth/register",{username,email,password,phone,address})
     return res.data
   }catch (err){
-    console.error("Error al registrar: ")
+    console.error("Error al registrar: ", err.message)
+    alert("Error al registar "+err)
     throw err;
   }
 }
@@ -121,7 +122,7 @@ export const fetchProducts = async () => {
 
 export const fetchProductById = async (id) => {
   try {
-    const res = await api.get(`/products/product/${id}`);
+    const res = await api.get(`/products/products/${id}`);
     return res.data;
   } catch (err) {
     
@@ -134,7 +135,7 @@ export const fetchorderbyUser = async (userId) => {
     const res = await api.get(`/products/orders/${userId}`);
     return res.data;
   } catch (err) {
-    
+
     throw err;
   }
 }
@@ -214,7 +215,7 @@ export const createOrder = async (user_id) => {
 // Obtener todas las órdenes
 export const getOrders = async () => {
   try {
-    const res = await api.get('/orders');
+    const res = await api.get('ventas/orders');
     return res.data;
   } catch (err) {
     console.error('Error al obtener las órdenes:', err.message);
@@ -223,9 +224,9 @@ export const getOrders = async () => {
 };
 
 // Obtener una orden específica
-export const getOrderById = async (user_id) => {
+export const getOrderById = async (id) => {
   try {
-    const res = await api.get(`/orders/${user_id}`);
+    const res = await api.get(`ventas/orders/${id}`);
     return res.data;
   } catch (err) {
     console.error('Error al obtener la orden:', err.message);
@@ -236,7 +237,7 @@ export const getOrderById = async (user_id) => {
 // Actualizar el estado de una orden
 export const updateOrderStatus = async (orderId, status) => {
   try {
-    const res = await api.patch(`/orders/${orderId}`, { status });
+    const res = await api.patch(`ventas/orders/${orderId}`, { status });
     return res.data;
   } catch (err) {
     console.error('Error al actualizar la orden:', err.message);
@@ -259,7 +260,7 @@ export const deleteOrder = async (orderId) => {
 export const addOrderItem = async (data) => {
   try {
     console.log(data)
-    const res = await api.post(`/orders/${data.orderId}/items`, data);
+    const res = await api.post(`ventas/orders/${data.order_id}/items`, data);
     return res.data;
   } catch (err) {
     console.error('Error al agregar un ítem a la orden:', err.message);

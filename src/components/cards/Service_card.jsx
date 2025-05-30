@@ -16,25 +16,24 @@ export default function Service_card({id,title, description, image }) {
       const userData = JSON.parse(localStorage.getItem('me'));
       const user_id = userData.id;
   
-
-        const order = await createOrder(user_id); 
-        const order_E = await getOrderById(order.order.id);
-        const item = await addOrderItem({ orderId: order_E.id, productId: id, quantity: 1 });
-      
-      
-      console.log(order.order.id)
-      
-      // Luego agregas el ítem a esa orden (el backend debería devolver la orden creada o existente)
-      
-      
+      let orderId = localStorage.getItem("order");
+  
+      if (!orderId || isNaN(Number(orderId))) {
+        const { order } = await createOrder(user_id);
+        if (!order?.id) throw new Error("Orden inválida");
+        orderId = order.id;
+        localStorage.setItem("order", orderId);
+      }
+  
+      await addOrderItem({ order_id: orderId, product_id:id, quantity: 1 });
+  
       alert('Producto agregado al carrito');
     } catch (err) {
-      if (err) {
-        alert('Error al agregar al carrito');
-        console.error(err);
-      }
+      console.error('Error al agregar al carrito:', err);
+      alert('Error al agregar al carrito');
     }
   };
+  
   
   
   

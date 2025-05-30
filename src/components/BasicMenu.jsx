@@ -70,7 +70,10 @@ export default function DashboardMenu() {
             >
               Gestionar Usuarios
             </MenuItem>
-            <MenuItem onClick={handleClose}>Ver reportes</MenuItem>
+            <MenuItem onClick={() => {
+                handleClose();
+                navigate("/Reportes");
+              }}>Ver reportes</MenuItem>
             </div>
         )}
       </Menu>

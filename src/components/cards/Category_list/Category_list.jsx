@@ -20,7 +20,7 @@ const Category_list = () => {
   }, []);
 
   const handleCategorySelect = (categoryId) => {
-    setSelectedCategory(categoryId); // 📌 actualiza el contexto global
+    setSelectedCategory(categoryId); 
     console.log(`Categoría ${categoryId} seleccionada`);
   };
 

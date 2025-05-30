@@ -9,6 +9,7 @@ import Gestor_usuarios from './routes/Gestor_usuarios/Gestor_usuarios'
 import Categorias from './seller/categorias/Categorias'
 import Productos from './seller/products/Productos'
 import { CategoryProvider } from './context/CategoryContext';
+import Reportes from './admin/Reportes'
 
 const App = () => {
   return (
@@ -24,6 +25,8 @@ const App = () => {
           <Route path="/seller/categories" element={<RoleBasedRoute allowedRoles={['admin','seller']}><Categorias/></RoleBasedRoute>} />
           {/* Aquí agregas la ruta para productos por categoría */}
           <Route path="/products/:categoryId" element={<RoleBasedRoute allowedRoles={['admin','seller']}><Productos/></RoleBasedRoute>} />
+
+          <Route path="/Reportes" element={<RoleBasedRoute allowedRoles={['admin']}><Reportes/></RoleBasedRoute>} />
         </Routes>
       </Router>
     </div>

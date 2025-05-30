@@ -51,12 +51,13 @@ const AuthForm = () => {
       const loginData = await loginUser({ email, password });
       localStorage.setItem('token', loginData.access_token); // Guarda el token en localStorage
   
-      
+      console.log(data)
       navigate('/')
     }catch(error){
-      setAlertMessage('Error en el regstro: ' +error)
+      setAlertMessage('Error en el regstro: ' +data)
       setAlertSeverity("error")
       setAlertOpen(true)
+      
     }
     
   }
@@ -187,6 +188,7 @@ const AuthForm = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
+                min={10}
               />
             </div>
 
